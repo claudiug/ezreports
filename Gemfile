@@ -43,6 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'whenever', :require => false
+
 
 gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.3'
