@@ -1,28 +1,16 @@
-== README
+flow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- enter email where and period to send reports
+- receive and email with the email address that you must add it to your bcc
+- when the time is due, you will receive and email with all the email that have bcc
 
-Things you may want to cover:
+=======
 
-* Ruby version
+1. enter email -> we check for valid email
+2. generate an email
+3. send email with information how to use it
+4. using `whenever` gem we will fetch the email using `imap` from the `email address` when time is due
+5. using `email library` we will send an email with all the email*
 
-* System dependencies
+* maybe as a attachment
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
