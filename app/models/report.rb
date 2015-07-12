@@ -13,9 +13,13 @@
 
 class Report < ActiveRecord::Base
 
+  validates :email, presence: true
+  validates :period, numericality: {only_integer: true}
+  has_one :email_pool
+
   after_save :assign_email
 
   def assign_email
-    #get email from email pool
+    self.generated_emai l= EmailPool.where(report_id: nil).sample.email
   end
 end
