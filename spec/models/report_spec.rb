@@ -9,6 +9,7 @@
 #  generated_email :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  subscribe_hash  :string
 #
 
 require 'rails_helper'

@@ -23,8 +23,9 @@ class ReportsController < ApplicationController
   def unsubscribe
     @report = Report.where(email: params[:email]).first
     if @report
+      @report.generate_hash_for_unsubscribe
+      #send email
       ReportEmail.unsubscribe(@report).deliver_now
-      clean_up(@report)
       redirect_to :reports_index_path
     else
       redirect_to :reports_index_path
@@ -33,10 +34,12 @@ class ReportsController < ApplicationController
 
   private
 
-  def clean_up(report)
+  def clean_up
+    report = Report.where(email: params[:email]).first
     report.generated_email = nil
     report.email_pool = nil
     report.save!
+    redirect_to reports_index_path
   end
 
 

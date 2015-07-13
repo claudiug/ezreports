@@ -9,6 +9,7 @@
 #  generated_email :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  subscribe_hash  :string
 #
 
 class Report < ActiveRecord::Base
@@ -20,6 +21,10 @@ class Report < ActiveRecord::Base
   after_save :assign_email
 
   def assign_email
-    self.generated_emai l= EmailPool.where(report_id: nil).sample.email
+    self.generated_email = EmailPool.where(report_id: nil).sample.email
+  end
+
+  def generate_hash_for_unsubscribe
+    update_column(:subscribe_hash, SecureRandom.base64)
   end
 end
